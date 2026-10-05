@@ -48,7 +48,7 @@
         <!-- Logo Branding Placeholder Bounding Container -->
         <a href="assets/dr_logo.jpg" class="flex items-center gap-3">
             <div class="w-12 h-12 border-2 border-dashed border-slate-500 rounded flex items-center justify-center text-[9px] text-center font-mono font-bold p-1 bg-white/5 text-slate-400">
-                
+                [ LOGO ]
             </div>
             <div class="flex flex-col">
                 <span class="font-display font-black text-base tracking-wider text-white">DR FITNESS</span>
@@ -59,6 +59,7 @@
             <a href="#home" class="text-white hover:text-indigo-400 transition-colors">Home</a>
             <a href="#about" class="text-slate-300 hover:text-indigo-400 transition-colors">Overview</a>
             <a href="#services" class="text-slate-300 hover:text-indigo-400 transition-colors">Services</a>
+            <a href="#trial" class="text-slate-300 hover:text-indigo-400 transition-colors">Free Trial</a>
             <a href="#pricing" class="text-slate-300 hover:text-indigo-400 transition-colors">Pricing</a>
             <a href="tel:06366021397" class="px-5 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-all font-bold">Call Studio</a>
         </nav>
@@ -181,6 +182,59 @@
         </div>
     </section>
 
+    <!-- BMI Trial Pass Engine -->
+    <section id="trial" class="py-24 px-6 md:px-12 max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="font-display tracking-[0.3em] text-indigo-400 text-xs uppercase font-bold mb-3 block">Free Trial Pass</span>
+            <h2 class="font-display text-3xl md:text-5xl font-black uppercase text-white">Check Your BMI. Claim Your Pass.</h2>
+            <p class="text-slate-400 text-sm font-light mt-4 max-w-xl mx-auto">Enter your numbers, see where you stand, and get your free trial pass on WhatsApp in one tap.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 border border-indigo-500/30 bg-indigo-950/10 rounded-2xl p-6 md:p-10">
+            <div id="bmi-form" class="space-y-5" novalidate>
+                <div>
+                    <label for="bmi-weight" class="font-display text-[10px] tracking-widest uppercase text-slate-300 font-bold block mb-2">Weight (kg)</label>
+                    <input id="bmi-weight" type="number" inputmode="decimal" min="20" max="300" step="0.1" placeholder="e.g. 72" class="w-full bg-black/40 border border-white/15 rounded px-4 py-3 text-white text-base focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40">
+                </div>
+                <div>
+                    <label for="bmi-height" class="font-display text-[10px] tracking-widest uppercase text-slate-300 font-bold block mb-2">Height (cm)</label>
+                    <input id="bmi-height" type="number" inputmode="decimal" min="100" max="250" step="0.1" placeholder="e.g. 170" class="w-full bg-black/40 border border-white/15 rounded px-4 py-3 text-white text-base focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40">
+                </div>
+                <div>
+                    <label for="bmi-goal" class="font-display text-[10px] tracking-widest uppercase text-slate-300 font-bold block mb-2">Your Goal</label>
+                    <select id="bmi-goal" class="w-full bg-black/40 border border-white/15 rounded px-4 py-3 text-white text-base focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40">
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Tone &amp; Sculpt">Tone &amp; Sculpt</option>
+                        <option value="Cardiorespiratory Endurance">Cardiorespiratory Endurance</option>
+                    </select>
+                </div>
+                <p id="bmi-error" class="text-red-400 text-sm hidden" role="alert"></p>
+                <button type="button" id="bmi-calc" class="w-full px-8 py-3 bg-indigo-600 text-white text-xs font-display tracking-widest uppercase font-bold transition-transform hover:scale-[1.02] shadow-[0_0_20px_rgba(79,70,229,0.5)]">Get Free Trial Pass</button>
+            </div>
+
+            <div class="flex flex-col justify-center min-h-[280px] rounded-xl border border-white/10 bg-black/30 p-6 text-center" aria-live="polite">
+                <div id="bmi-empty" class="text-slate-500 text-sm font-light">
+                    <i class="fa-solid fa-weight-scale text-3xl text-indigo-400/60 mb-3 block"></i>
+                    Your BMI result will appear here.
+                </div>
+                <div id="bmi-result" class="hidden">
+                    <span class="font-display text-[10px] tracking-[0.3em] uppercase text-slate-400 font-bold block mb-2">Your BMI</span>
+                    <div id="bmi-score" class="font-display text-6xl font-black text-white mb-2">0</div>
+                    <div id="bmi-class" class="inline-block font-display text-xs tracking-widest uppercase font-bold px-4 py-1 rounded border mb-5"></div>
+                    <div class="relative h-2 rounded-full bg-gradient-to-r from-sky-400 via-green-400 via-yellow-400 to-red-500 mb-1">
+                        <div id="bmi-marker" class="absolute top-1/2 w-4 h-4 rounded-full bg-white border-2 border-black -translate-y-1/2 -translate-x-1/2 transition-all duration-500" style="left:0%"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500 font-mono mb-6"><span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
+                    <a id="bmi-wa" href="#" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-black text-xs font-display tracking-widest uppercase font-black transition-transform hover:scale-[1.02]">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Claim Your Free Trial Pass via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="text-[10px] text-slate-500 text-center mt-4 font-light">BMI is a general screening guide, not a medical diagnosis. Our trainers will review your goals in person.</p>
+    </section>
+
     <!-- Pricing Section -->
     <section id="pricing" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="text-center mb-16">
@@ -292,5 +346,57 @@
         </a>
     </div>
 
+    <script>
+    (function () {
+        var WA_NUMBER = '916366021397';
+        var $ = function (id) { return document.getElementById(id); };
+        var classes = [
+            { max: 18.5, label: 'Underweight', cls: 'text-sky-300 border-sky-400/50 bg-sky-500/10' },
+            { max: 25,   label: 'Normal',      cls: 'text-green-300 border-green-400/50 bg-green-500/10' },
+            { max: 30,   label: 'Overweight',  cls: 'text-yellow-300 border-yellow-400/50 bg-yellow-500/10' },
+            { max: Infinity, label: 'Obese',   cls: 'text-red-300 border-red-400/50 bg-red-500/10' }
+        ];
+
+        function showError(msg) {
+            var e = $('bmi-error');
+            e.textContent = msg;
+            e.classList.toggle('hidden', !msg);
+        }
+
+        function calculate() {
+            var w = parseFloat($('bmi-weight').value);
+            var h = parseFloat($('bmi-height').value);
+            if (!(w >= 20 && w <= 300)) { showError('Enter a weight between 20 and 300 kg.'); return; }
+            if (!(h >= 100 && h <= 250)) { showError('Enter a height between 100 and 250 cm.'); return; }
+            showError('');
+
+            var bmi = w / Math.pow(h / 100, 2);
+            var bmiText = bmi.toFixed(1);
+            var c = classes.filter(function (x) { return bmi < x.max; })[0];
+            var goal = $('bmi-goal').value;
+
+            $('bmi-score').textContent = bmiText;
+            var badge = $('bmi-class');
+            badge.textContent = c.label;
+            badge.className = 'inline-block font-display text-xs tracking-widest uppercase font-bold px-4 py-1 rounded border mb-5 ' + c.cls;
+
+            var pct = Math.min(100, Math.max(0, (bmi - 15) / 25 * 100));
+            $('bmi-marker').style.left = pct + '%';
+
+            var msg = 'Hi DR Fitness! I just checked my BMI on your website. My BMI is ' + bmiText +
+                ' (' + c.label + ') and my goal is ' + goal +
+                '. I would like to claim my Free Trial Pass for the Nagarabhavi branch!';
+            $('bmi-wa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+
+            $('bmi-empty').classList.add('hidden');
+            $('bmi-result').classList.remove('hidden');
+        }
+
+        $('bmi-calc').addEventListener('click', calculate);
+        ['bmi-weight', 'bmi-height'].forEach(function (id) {
+            $(id).addEventListener('keydown', function (e) { if (e.key === 'Enter') calculate(); });
+        });
+    })();
+    </script>
 </body>
 </html>
